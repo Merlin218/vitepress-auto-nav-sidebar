@@ -18,8 +18,6 @@ const getSidebar = (path: string): DefaultTheme.Sidebar => {
       const subText = FileHelper.getDirNameByPath(subFolderPath);
       const subSubFolderName = FileHelper.getCurDirs(subFolderPath).map((item) => FileHelper.getDirNameByPath(item));
       const subSubFileName = FileHelper.getMdFiles(subFolderPath).map((item) => FileHelper.getFileNameByPath(item))
-      console.log('subSubFolderName:', subSubFolderName)
-      console.log('subSubFileName:', subSubFileName)
       return {
         text: `${options.dirPrefix}${subText}`,
         items: [
