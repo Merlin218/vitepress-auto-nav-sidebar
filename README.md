@@ -25,7 +25,7 @@ pnpm i vitepress-auto-nav-sidebar
 
 2. 在`vuepress`配置中使用插件，示例如下
 
-```ts
+```js
 import AutoNavPlugin from 'vitepress-auto-nav-sidebar'
 
 const { nav, sidebar } = AutoNavPlugin({
@@ -37,8 +37,8 @@ const { nav, sidebar } = AutoNavPlugin({
   showSideIcon:true,
   isCollapse: true,
   collapsed: true,
+  singleLayerNav:true
 })
-
 module.exports = {
   themeConfig: {
     nav,
@@ -58,5 +58,5 @@ module.exports = {
 | showNavIcon     | Boolean                | true       | 显示nav修饰                                                                                                                           |
 | showSideIcon         | Boolean                | false        | 显示sidebar修饰                                                                                                           |
 | isCollapsible    | Boolean                | true       | sidebar是否可折叠                                                                                                                           |
-| collapsed    | Boolean                | true       | sidebar默认折叠情况                                                                                                                           |
-
+| collapsed    | Boolean                | false       | sidebar默认不折叠                                                                                                                           |
+| singleLayerNav    | Boolean                | false       | 是否设置单层nav                                                                                          |

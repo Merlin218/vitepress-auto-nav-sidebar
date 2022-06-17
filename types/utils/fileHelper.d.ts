@@ -7,5 +7,6 @@ declare const _default: {
     getMdFiles: (path: string, prefix?: string) => string[];
     getFileNameByPath: (dir: string) => string;
     getDirNameByPath: (dir: string) => string;
+    hasIndexMd: (path: string) => boolean;
 };
 export default _default;

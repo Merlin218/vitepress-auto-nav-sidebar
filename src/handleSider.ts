@@ -2,6 +2,7 @@
 import { DefaultTheme } from 'vitepress/types/default-theme'
 import FileHelper from './utils/fileHelper'
 import { getOptions } from './defaultConfig';
+import { formatText, getFilterCurFolder, getFilterCurMDFile } from './common';
 
 const defaultArticleFolderName = '文章'
 
@@ -13,25 +14,25 @@ const defaultArticleFolderName = '文章'
 const getSidebar = (path: string): DefaultTheme.Sidebar => {
   const options = getOptions();
   const sidebar: DefaultTheme.Sidebar = {}
-  FileHelper.getCurDirs(path).sort().forEach((dir: string) => {
+  getFilterCurFolder(path).sort().forEach((dir: string) => {
     const folderText = FileHelper.getDirNameByPath(dir);
     const propName = '/' + folderText + '/'
-    const subFolders = FileHelper.getCurDirs(dir);
+    const subFolders = getFilterCurFolder(dir);
     const folderItems = subFolders.map((subFolderPath) => {
       const subText = FileHelper.getDirNameByPath(subFolderPath);
-      const subSubFolderName = FileHelper.getCurDirs(subFolderPath).map((item) => FileHelper.getDirNameByPath(item));
-      const subSubFileName = FileHelper.getMdFiles(subFolderPath).map((item) => FileHelper.getFileNameByPath(item))
+      const subSubFolderName = getFilterCurFolder(subFolderPath).map((item) => FileHelper.getDirNameByPath(item));
+      const subSubFileName = getFilterCurMDFile(subFolderPath).map((item) => FileHelper.getFileNameByPath(item))
       return {
-        text: options.showSideIcon ? `${options.dirPrefix}${subText}` : subText,
+        text: formatText(subText, 'sidebar', 'dir'),
         collapsible: options.isCollapsible,
         collapsed: options.collapsed,
         items: [
           ...subSubFolderName.map((item) => ({
-            text: options.showSideIcon ? `${options.dirPrefix}${item}` : item,
+            text: formatText(item, 'sidebar', 'dir'),
             link: propName + subText + '/' + item + '/'
           })),
           ...subSubFileName.map((item => ({
-            text: options.showSideIcon ? `${options.filePrefix}${item}` : item,
+            text: formatText(item, 'sidebar', 'file'),
             link: propName + subText + '/' + item
           })))
         ]
@@ -40,14 +41,14 @@ const getSidebar = (path: string): DefaultTheme.Sidebar => {
     sidebar[propName] = [
       ...folderItems,
     ]
-    const subFiles = FileHelper.getMdFiles(dir).map(item => FileHelper.getFileNameByPath(item));
+    const subFiles = getFilterCurMDFile(dir).map(item => FileHelper.getFileNameByPath(item));
     if (subFiles.length > 0) {
       const fileItems = subFiles.map(item => ({
-        text: options.showSideIcon ? `${options.filePrefix}${item}` : item,
+        text: formatText(item, 'sidebar', 'file'),
         link: propName + '/' + item
       }))
       sidebar[propName].unshift({
-        text: options.showSideIcon ? `${options.dirPrefix}${defaultArticleFolderName}` : defaultArticleFolderName,
+        text: formatText(defaultArticleFolderName, 'sidebar', 'dir'),
         collapsible: options.isCollapsible,
         collapsed: options.collapsed,
         items: fileItems

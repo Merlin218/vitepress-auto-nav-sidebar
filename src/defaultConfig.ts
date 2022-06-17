@@ -8,11 +8,12 @@ let defaultOptions: Options = {
   showNavIcon: true,
   showSideIcon: false,
   isCollapsible: true,
-  collapsed: true,
+  collapsed: false,
+  singleLayerNav:false
 }
 
 function setOptions(options: Options) {
-  defaultOptions = options
+ Object.assign(defaultOptions,options)
 }
 
 function getOptions() {

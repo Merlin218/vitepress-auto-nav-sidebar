@@ -8,7 +8,8 @@ declare interface Options {
     showSideIcon:boolean,
     showNavIcon:boolean,
     isCollapsible:boolean,
-    collapsed:boolean
+    collapsed:boolean,
+    singleLayerNav:boolean
 }
 
 declare const AutoNavPlugin: (options?: Options) => NavItem[];
