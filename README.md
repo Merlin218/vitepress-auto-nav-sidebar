@@ -11,8 +11,6 @@ vuepress导航栏自动生成
     - [x] TypeScript支持
     - [x] 目录/文件前缀设置，默认为「 📂 」/「 ✏️ 」
     - [x] 目录/文件的过滤
-    - [x] 读取深度设置
-    - [x] 兼容vuepress和vuepress@next
 - 下一步优化
    - [ ] 插件配置待丰富
    - [ ] 过滤支持正则
@@ -35,7 +33,10 @@ const { nav, sidebar } = AutoNavPlugin({
   ignoreFiles: ['个人简历'], // 需要排除的一些文件
   dirPrefix: '目录：',
   filePrefix: '文件：',
-  
+  showNavIcon:false,
+  showSideIcon:true,
+  isCollapse: true,
+  collapsed: true,
 })
 
 module.exports = {
@@ -53,8 +54,9 @@ module.exports = {
 | ignoreFolders | String[]              | []      | 需要排除的一些目录                                                                                                                                 |
 | ignoreFiles   | String[]              | []      | 需要排除的一些文件                                                                                                                                 |
 | filePrefix    | String                | ✏️       | 文件前缀修饰，有助于区分                                                                                                                           |
-| showNavIcon     | Boolean                | true       | 显示nav图标                                                                                                                           |
-| showSideIcon         | Boolean                | false        | 显示sidebar图标                                                                                                           |
+| dirPrefix    | String                | ✏️       | 目录前缀修饰，有助于区分                                                                                                                           |
+| showNavIcon     | Boolean                | true       | 显示nav修饰                                                                                                                           |
+| showSideIcon         | Boolean                | false        | 显示sidebar修饰                                                                                                           |
 | isCollapsible    | Boolean                | true       | sidebar是否可折叠                                                                                                                           |
 | collapsed    | Boolean                | true       | sidebar默认折叠情况                                                                                                                           |
 
