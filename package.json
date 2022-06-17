@@ -1,6 +1,6 @@
 {
-  "name": "vitepress-auto-nav-sider",
-  "version": "0.0.1",
+  "name": "vitepress-auto-nav-sidebar",
+  "version": "0.0.3",
   "description": "自动生成vitepress导航栏和侧边栏",
   "keywords": [
     "vitepress-plugin",
@@ -20,11 +20,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Merlin218/vitepress-auto-nav-sider.git"
+    "url": "git+https://github.com/Merlin218/vitepress-auto-nav-sidebar.git"
   },
-  "homepage": "https://github.com/Merlin218/vitepress-auto-nav-sider/blob/master/README.md",
+  "homepage": "https://github.com/Merlin218/vitepress-auto-nav-sidebar/blob/master/README.md",
   "bugs": {
-    "url": "https://github.com/Merlin218/vitepress-auto-nav-sider/issues"
+    "url": "https://github.com/Merlin218/vitepress-auto-nav-sidebar/issues"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.3",

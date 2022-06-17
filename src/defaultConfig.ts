@@ -1,11 +1,14 @@
 import { Options } from "../types/custom"
 
 let defaultOptions: Options = {
-  subNavShow: [],
   ignoreFolders: [],
   ignoreFiles: [],
   dirPrefix: '📂  ',
   filePrefix: '✏️  ',
+  showNavIcon: true,
+  showSideIcon: false,
+  isCollapsible: true,
+  collapsed: true,
 }
 
 function setOptions(options: Options) {
