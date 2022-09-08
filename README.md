@@ -2,7 +2,7 @@
 
 vuepress导航栏自动生成
 
-[效果预览](https://www.merlin218.top)
+[效果预览](https://blog.merlin218.top)
 
 ## Feature
 
