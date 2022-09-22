@@ -1,6 +1,6 @@
 {
   "name": "vitepress-auto-nav-sidebar",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "自动生成vitepress导航栏和侧边栏",
   "keywords": [
     "vitepress-plugin",
