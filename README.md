@@ -1,6 +1,6 @@
 # vitepress-auto-nav-sidebar
 
-vuepress导航栏自动生成
+vitepress导航栏自动生成
 
 [效果预览](https://blog.merlin218.top)
 
