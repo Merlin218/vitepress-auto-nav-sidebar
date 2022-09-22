@@ -10,7 +10,7 @@ import { getOptions } from '../defaultConfig';
  * @returns
  */
 const getCurFiles = (dir: string, SuffixIncludes: string[] = [], unFileIncludes: string[] = []) => {
-  if(!dir) return [];
+  if (!dir) return [];
   // readdirSync 仅返回当前这层的数据
   const filenameList = readdirSync(dir).sort().filter((filename: string) => {
     // statSync() 用来获取文件信息 stat => status
@@ -36,7 +36,7 @@ const isNotReadme = (filename: string) => filename.toLocaleLowerCase() !== "read
  * @returns {Array} allDirs 所有的目录
  */
 const getAllDirs = (dir = ".", unDirIncludes: string[]) => {
-  if(!dir) return [];
+  if (!dir) return [];
   // 获取目录数据
   const items = readdirSync(dir);
   let allDirs: string[] = [];
@@ -58,7 +58,7 @@ const getAllDirs = (dir = ".", unDirIncludes: string[]) => {
  * @returns {Array} 子目录列表
  */
 const getCurDirs = (dir = "."): string[] => {
-  if(!dir) return [];
+  if (!dir) return [];
   const options = getOptions()
   // 获取目录数据
   const items = readdirSync(dir);
@@ -66,7 +66,7 @@ const getCurDirs = (dir = "."): string[] => {
   // 递归遍历目录中所有文件夹
   items.forEach((item: string) => {
     const dirName = path.join(dir, item);
-    if (statSync(dirName).isDirectory() && !options.ignoreFolders.includes(item)) {
+    if (statSync(dirName).isDirectory() && !options.ignoreFolders?.includes(item)) {
       allCurDirs.push(dirName);
     }
   });
@@ -116,7 +116,7 @@ const hasSubDirs = (path: string) => {
  * @return {array} 返回带前缀的文件名列表
  */
 const getMdFiles = (path: string, prefix = '') => {
-  if(!path) return [];
+  if (!path) return [];
   const options = getOptions();
   const files = getCurFiles(path, ['md'], options.ignoreFiles)
   return files.map((item: string) => prefix + item);
@@ -130,12 +130,12 @@ const getFileNameByPath = (dir: string) => {
   return dir.substring(dir.lastIndexOf('/') + 1, dir.lastIndexOf('.'))
 }
 
-const hasIndexMd = (path:string)=>{
-  if(!path) return false;
-  return getCurFiles(path, ['md']).map(item=>getFileNameByPath(item)).includes('index')
+const hasIndexMd = (path: string) => {
+  if (!path) return false;
+  return getCurFiles(path, ['md']).map(item => getFileNameByPath(item)).includes('index')
 }
 
 export default {
-  getCurFiles, getAllDirs, getCurDirs, createREADME, hasSubDirs, getMdFiles, getFileNameByPath, getDirNameByPath,hasIndexMd
+  getCurFiles, getAllDirs, getCurDirs, createREADME, hasSubDirs, getMdFiles, getFileNameByPath, getDirNameByPath, hasIndexMd
 }
 

@@ -18,18 +18,18 @@ const getNav = (path: string): DefaultTheme.NavItem[] => {
     .forEach((dir: string) => {
       const text = FileHelper.getDirNameByPath(dir);
       if (options.singleLayerNav) {
-        if(FileHelper.hasIndexMd(dir)){
+        if (FileHelper.hasIndexMd(dir)) {
           arr.push({
             text: formatText(text, 'nav', 'dir'),
-            link: '/' + text+'/'
+            link: '/' + text + '/'
           });
-        }else{
+        } else {
           const firstFile = getFilterCurMDFile(dir)[0];
           const firstFolder = getFilterCurFolder(dir)[0];
           const firstFolderFirstFile = getFilterCurMDFile(firstFolder)[0];
           arr.push({
             text: formatText(text, 'nav', 'dir'),
-            link: '/' + text+'/' + firstFile ?? `${FileHelper.getDirNameByPath(firstFolder)}/${FileHelper.getFileNameByPath(firstFolderFirstFile)}` ?? ''
+            link: '/' + text + '/' + firstFile ?? `${FileHelper.getDirNameByPath(firstFolder)}/${FileHelper.getFileNameByPath(firstFolderFirstFile)}` ?? ''
           });
         }
 

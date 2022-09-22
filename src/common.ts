@@ -5,12 +5,12 @@ const options = getOptions();
 
 export function getFilterCurFolder(path: string) {
   return FileHelper.getCurDirs(path).sort()
-    .filter((item => !options.ignoreFolders.includes(FileHelper.getDirNameByPath(item))));
+    .filter((item => !options.ignoreFolders?.includes(FileHelper.getDirNameByPath(item))));
 }
 
 export function getFilterCurMDFile(path: string) {
   return FileHelper.getMdFiles(path).sort()
-    .filter((item => !options.ignoreFiles.includes(FileHelper.getFileNameByPath(item))));
+    .filter((item => !options.ignoreFiles?.includes(FileHelper.getFileNameByPath(item))));
 }
 
 export function formatText(text: string, target: 'nav' | 'sidebar', type: 'dir' | 'file') {

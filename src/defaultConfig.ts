@@ -1,6 +1,7 @@
 import { Options } from "../types/custom"
 
 let defaultOptions: Options = {
+  entry: 'docs',
   ignoreFolders: [],
   ignoreFiles: [],
   dirPrefix: '📂  ',
@@ -9,11 +10,12 @@ let defaultOptions: Options = {
   showSideIcon: false,
   isCollapsible: true,
   collapsed: false,
-  singleLayerNav:false
+  singleLayerNav: false,
+  customParentFolderName: '',
 }
 
 function setOptions(options: Options) {
- Object.assign(defaultOptions,options)
+  defaultOptions = Object.assign(defaultOptions, options)
 }
 
 function getOptions() {

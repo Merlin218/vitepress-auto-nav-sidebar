@@ -4,7 +4,6 @@ import FileHelper from './utils/fileHelper'
 import { getOptions } from './defaultConfig';
 import { formatText, getFilterCurFolder, getFilterCurMDFile } from './common';
 
-const defaultArticleFolderName = '文章'
 
 /**
  * @description: 获取导航配置项
@@ -42,13 +41,15 @@ const getSidebar = (path: string): DefaultTheme.Sidebar => {
       ...folderItems,
     ]
     const subFiles = getFilterCurMDFile(dir).map(item => FileHelper.getFileNameByPath(item));
+    console.log('dir:', dir)
     if (subFiles.length > 0) {
       const fileItems = subFiles.map(item => ({
         text: formatText(item, 'sidebar', 'file'),
         link: propName + '/' + item
       }))
+      const parentFolderName = options.customParentFolderName && options.customParentFolderName !== '' ? options.customParentFolderName : dir.substring(dir.lastIndexOf('/') + 1);
       sidebar[propName].unshift({
-        text: formatText(defaultArticleFolderName, 'sidebar', 'dir'),
+        text: formatText(parentFolderName, 'sidebar', 'dir'),
         collapsible: options.isCollapsible,
         collapsed: options.collapsed,
         items: fileItems
