@@ -1,5 +1,7 @@
 # vitepress-auto-nav-sidebar
 
+[![OSCS Status](https://www.oscs1024.com/platform/badge/Merlin218/vitepress-auto-nav-sidebar.svg?size=small)](https://www.oscs1024.com/project/Merlin218/vitepress-auto-nav-sidebar?ref=badge_small)
+
 vitepress导航栏自动生成
 
 [效果预览](https://blog.merlin218.top)
