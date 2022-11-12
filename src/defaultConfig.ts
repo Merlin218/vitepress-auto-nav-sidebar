@@ -1,27 +1,26 @@
-import { Options } from "../types/custom"
+import { Options } from "../types/custom";
 
 let defaultOptions: Options = {
-  entry: 'docs',
-  ignoreFolders: [],
-  ignoreFiles: [],
-  dirPrefix: '📂  ',
-  filePrefix: '✏️  ',
-  showNavIcon: true,
-  showSideIcon: false,
-  isCollapsible: true,
-  collapsed: false,
-  singleLayerNav: false,
-  customParentFolderName: '',
-}
+	entry: "docs",
+	ignoreFolders: [],
+	ignoreFiles: [],
+	dirPrefix: "📂  ",
+	filePrefix: "✏️  ",
+	showNavIcon: true,
+	showSideIcon: false,
+	isCollapsible: true,
+	collapsed: false,
+	singleLayerNav: false,
+	customParentFolderName: "",
+	hiddenFilePrefix: ".",
+};
 
 function setOptions(options: Options) {
-  defaultOptions = Object.assign(defaultOptions, options)
+	defaultOptions = Object.assign(defaultOptions, options);
 }
 
 function getOptions() {
-  return defaultOptions || {};
+	return defaultOptions || {};
 }
 
-export {
-  defaultOptions, setOptions, getOptions
-}
+export { defaultOptions, setOptions, getOptions };
