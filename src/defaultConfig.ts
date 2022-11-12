@@ -1,18 +1,18 @@
-import { Options } from "../types/custom";
+import { Options } from '../types/custom';
 
 let defaultOptions: Options = {
-	entry: "docs",
+	entry: 'docs',
 	ignoreFolders: [],
 	ignoreFiles: [],
-	dirPrefix: "📂  ",
-	filePrefix: "✏️  ",
+	dirPrefix: '📂  ',
+	filePrefix: '✏️  ',
 	showNavIcon: true,
 	showSideIcon: false,
 	isCollapsible: true,
 	collapsed: false,
 	singleLayerNav: false,
-	customParentFolderName: "",
-	hiddenFilePrefix: ".",
+	customParentFolderName: '',
+	hiddenFilePrefix: '.',
 };
 
 function setOptions(options: Options) {
@@ -20,7 +20,7 @@ function setOptions(options: Options) {
 }
 
 function getOptions() {
-	return defaultOptions || {};
+	return defaultOptions;
 }
 
 export { defaultOptions, setOptions, getOptions };
