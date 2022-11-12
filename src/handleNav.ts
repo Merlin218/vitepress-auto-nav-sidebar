@@ -1,6 +1,6 @@
 
-import { DefaultTheme } from 'vitepress/types/default-theme'
-import FileHelper from './utils/fileHelper'
+import { DefaultTheme } from 'vitepress/types/default-theme';
+import FileHelper from './utils/fileHelper';
 import { formatText, getFilterCurFolder, getFilterCurMDFile } from './common';
 import { getOptions } from './defaultConfig';
 
@@ -13,7 +13,7 @@ const options = getOptions();
  * @return {*} 返回nav配置
  */
 const getNav = (path: string): DefaultTheme.NavItem[] => {
-  const arr: DefaultTheme.NavItem[] = []
+  const arr: DefaultTheme.NavItem[] = [];
   getFilterCurFolder(path)
     .forEach((dir: string) => {
       const text = FileHelper.getDirNameByPath(dir);
@@ -37,17 +37,17 @@ const getNav = (path: string): DefaultTheme.NavItem[] => {
         const subFolders = getFilterCurFolder(dir);
         const folderItems = subFolders.map((subFolderPath) => {
           const subFolderText = FileHelper.getDirNameByPath(subFolderPath);
-          const firstFile = getFilterCurMDFile(subFolderPath)[0]
+          const firstFile = getFilterCurMDFile(subFolderPath)[0];
           return {
             text: formatText(subFolderText, 'nav', 'dir'),
             link: '/' + text + '/' + subFolderText + '/' + firstFile ?? FileHelper.getFileNameByPath(firstFile) ?? ''
-          }
-        })
+          };
+        });
         const subFiles = getFilterCurMDFile(dir).map(item => FileHelper.getFileNameByPath(item));
         const fileItems = subFiles.map(subFileText => ({
           text: formatText(subFileText, 'nav', 'file'),
           link: '/' + text + '/' + subFileText
-        }))
+        }));
         arr.push({
           text: formatText(text, 'nav', 'dir'),
           items: [
@@ -56,7 +56,7 @@ const getNav = (path: string): DefaultTheme.NavItem[] => {
           ]
         });
       }
-    })
+    });
   // 获取当前目录的文件
   let files = [];
   if ((files = getFilterCurMDFile(path).map(item => FileHelper.getFileNameByPath(item))).length > 0) {
@@ -64,10 +64,10 @@ const getNav = (path: string): DefaultTheme.NavItem[] => {
       arr.push({
         text: formatText(item, 'nav', 'file'),
         link: '/' + item
-      })
-    })
+      });
+    });
   }
   return arr;
-}
+};
 
-export { getNav }
+export { getNav };
