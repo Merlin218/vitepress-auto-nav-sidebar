@@ -14,7 +14,9 @@
   ],
   "scripts": {
     "dev": "rollup -c ./rollup.config.js -w",
-    "build": "rollup -c ./rollup.config.js"
+    "build": "rollup -c ./rollup.config.js",
+    "lint": "eslint --fix --ext .ts src",
+    "prepare": "husky install"
   },
   "author": "merlin218",
   "license": "MIT",
@@ -32,6 +34,8 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "eslint": "^8.10.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
     "rollup": "^2.70.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
@@ -42,5 +46,10 @@
   },
   "directories": {
     "lib": "lib"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix"
+    ]
   }
 }
