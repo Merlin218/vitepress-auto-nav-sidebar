@@ -1,6 +1,6 @@
 import { Options } from '../types/custom';
 
-let defaultOptions: Options = {
+const defaultOptions = (): Required<Options> => ({
 	entry: 'docs',
 	ignoreFolders: [],
 	ignoreFiles: [],
@@ -13,14 +13,8 @@ let defaultOptions: Options = {
 	singleLayerNav: false,
 	customParentFolderName: '',
 	hiddenFilePrefix: '.',
-};
+});
 
-function setOptions(options: Options) {
-	defaultOptions = Object.assign(defaultOptions, options);
-}
 
-function getOptions() {
-	return defaultOptions;
-}
 
-export { defaultOptions, setOptions, getOptions };
+export { defaultOptions };
