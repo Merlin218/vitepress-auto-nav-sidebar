@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "dev": "father dev",
-    "build": "father build",
+    "build": "father doctor && father build",
     "publish": "semantic-release",
     "lint": "eslint --fix --ext .ts src",
     "prepare": "husky install"
