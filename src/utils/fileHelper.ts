@@ -123,11 +123,11 @@ const getMdFiles = (path: string, prefix = '') => {
 }
 
 const getDirNameByPath = (dir: string) => {
-  return dir.substring(dir.lastIndexOf('/') + 1)
+  return dir.substring(dir.lastIndexOf(path.sep) + 1)
 }
 
 const getFileNameByPath = (dir: string) => {
-  return dir.substring(dir.lastIndexOf('/') + 1, dir.lastIndexOf('.'))
+  return dir.substring(dir.lastIndexOf(path.sep) + 1, dir.lastIndexOf('.'))
 }
 
 const hasIndexMd = (path: string) => {
