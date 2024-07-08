@@ -1,6 +1,5 @@
-import { NavItem } from "@vuepress/types";
 
-declare interface Options {
+export interface Options {
 	entry?: string;
 	ignoreFolders?: string[];
 	ignoreFiles?: string[];
@@ -15,4 +14,3 @@ declare interface Options {
 	hiddenFilePrefix?: string;
 }
 
-declare const AutoNavPlugin: (options?: Options) => NavItem[];

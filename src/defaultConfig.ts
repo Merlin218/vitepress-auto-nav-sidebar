@@ -1,4 +1,4 @@
-import { Options } from '../types/custom';
+import { Options } from '../types';
 
 let defaultOptions: Options = {
 	entry: 'docs',

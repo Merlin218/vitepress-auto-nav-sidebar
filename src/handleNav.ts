@@ -5,11 +5,10 @@ import { formatText, getFilterCurFolder, getFilterCurMDFile } from './common';
 import { getOptions } from './defaultConfig';
 
 const options = getOptions();
+
 /**
  * @description: 获取导航配置项
  * @param {string} path 目录路径
- * @param {number} depth 目录深度
- * @param {string} prefix 父级前缀
  * @return {*} 返回nav配置
  */
 const getNav = (path: string): DefaultTheme.NavItem[] => {
@@ -24,23 +23,27 @@ const getNav = (path: string): DefaultTheme.NavItem[] => {
             link: '/' + text + '/'
           });
         } else {
-          const firstFile = getFilterCurMDFile(dir)[0];
-          const firstFolder = getFilterCurFolder(dir)[0];
-          const firstFolderFirstFile = getFilterCurMDFile(firstFolder)[0];
-          arr.push({
-            text: formatText(text, 'nav', 'dir'),
-            link: '/' + text + '/' + firstFile ?? `${FileHelper.getDirNameByPath(firstFolder)}/${FileHelper.getFileNameByPath(firstFolderFirstFile)}` ?? ''
-          });
+          let firstFile = getFilterCurMDFile(dir)[0];
+
+          if (!firstFile) {
+            const firstFolder = getFilterCurFolder(dir)[0];
+            const firstFolderFirstFile = getFilterCurMDFile(firstFolder)[0];
+            if (firstFolder && firstFolderFirstFile) {
+              firstFile = `${FileHelper.getDirNameByPath(firstFolder)}/${FileHelper.getFileNameByPath(firstFolderFirstFile)}`
+            }
+          }
         }
 
       } else {
-        const subFolders = getFilterCurFolder(dir);
-        const folderItems = subFolders.map((subFolderPath) => {
+        const subFolders = getFilterCurFolder(dir).filter(item => getFilterCurMDFile(item).length > 0);
+          // filter folder which length is 0
+          const folderItems = subFolders.map((subFolderPath) => {
           const subFolderText = FileHelper.getDirNameByPath(subFolderPath);
           const firstFile = getFilterCurMDFile(subFolderPath)[0];
+
           return {
             text: formatText(subFolderText, 'nav', 'dir'),
-            link: '/' + text + '/' + subFolderText + '/' + firstFile ?? FileHelper.getFileNameByPath(firstFile) ?? ''
+            link: '/' + text + '/' + subFolderText + '/' + (firstFile ? FileHelper.getFileNameByPath(firstFile) : '')
           };
         });
         const subFiles = getFilterCurMDFile(dir).map(item => FileHelper.getFileNameByPath(item));

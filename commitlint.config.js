@@ -14,7 +14,7 @@ export default {
   ],
   rules: {
     'type-enum': [2, 'always', [
-      'feature', 'update', 'fixbug', 'refactor', 'optimize', 'style', 'docs', 'chore'
+      'feat', 'fix', 'refactor', 'optimize', 'style', 'docs', 'chore'
     ]],
     'type-case': [0],
     'type-empty': [0],
