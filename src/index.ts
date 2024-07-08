@@ -1,9 +1,9 @@
 import { getNav } from './handleNav';
 import { resolve } from 'path';
-import { Options } from '../types/custom';
 
 import { setOptions, defaultOptions } from './defaultConfig';
 import { getSidebar } from './handleSider';
+import { Options } from '../types';
 
 export default function AutoNavPlugin(options: Partial<Options>) {
   if (!options) options = defaultOptions;

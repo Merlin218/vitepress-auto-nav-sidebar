@@ -19,7 +19,7 @@ export function getFilterCurMDFile(path: string) {
 		.filter((item) => {
 			const fileName = FileHelper.getFileNameByPath(item);
 			return (
-				ignoreFiles?.includes(fileName) || fileName.startsWith(hiddenFilePrefix || '.')
+				!(ignoreFiles?.includes(fileName) || fileName.startsWith(hiddenFilePrefix || '.'))
 			);
 		});
 }

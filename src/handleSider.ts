@@ -4,7 +4,6 @@ import FileHelper from './utils/fileHelper';
 import { getOptions } from './defaultConfig';
 import { formatText, getFilterCurFolder, getFilterCurMDFile } from './common';
 
-
 /**
  * @description: 获取导航配置项
  * @param {string} path 目录路径
@@ -16,7 +15,8 @@ const getSidebar = (path: string): DefaultTheme.Sidebar => {
   getFilterCurFolder(path).sort().forEach((dir: string) => {
     const folderText = FileHelper.getDirNameByPath(dir);
     const propName = '/' + folderText + '/';
-    const subFolders = getFilterCurFolder(dir);
+    // filter folder which length is 0
+    const subFolders = getFilterCurFolder(dir).filter(item => getFilterCurMDFile(item).length > 0);
     const folderItems = subFolders.map((subFolderPath) => {
       const subText = FileHelper.getDirNameByPath(subFolderPath);
       const subSubFolderName = getFilterCurFolder(subFolderPath).map((item) => FileHelper.getDirNameByPath(item));
